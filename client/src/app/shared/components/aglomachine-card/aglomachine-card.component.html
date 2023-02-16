@@ -1,0 +1,10 @@
+<section class="header">
+  {{ aglomachine.name }}
+</section>
+
+<section class="body">
+  <app-exhauster-card
+    *ngFor="let exhauster of aglomachine.exhausters"
+    [exhauster]="exhauster"
+  ></app-exhauster-card>
+</section>

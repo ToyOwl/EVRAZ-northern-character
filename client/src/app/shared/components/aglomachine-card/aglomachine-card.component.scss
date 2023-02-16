@@ -1,0 +1,11 @@
+.header {
+  background-color: var(--surface-400);
+  padding: 0.3em 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0.5em;
+}

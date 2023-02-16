@@ -1,0 +1,14 @@
+:host ::ng-deep .p-card-header {
+  background-color: var(--surface-800);
+  color: var(--surface-0);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  padding-left: 0.5em;
+}
+
+:host ::ng-deep .date-wrapper {
+  background-color: var(--surface-500);
+}

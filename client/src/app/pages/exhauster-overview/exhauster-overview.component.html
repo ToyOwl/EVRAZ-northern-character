@@ -1,9 +1,4 @@
-<div *ngFor="let aglomachine of $aglomachineData | async">
-  {{ aglomachine.name }}
-  <ul>
-    <app-exhauster-card
-      *ngFor="let exhauster of aglomachine.exhausters"
-      [exhauster]="exhauster"
-    ></app-exhauster-card>
-  </ul>
-</div>
+<app-aglomachine-card
+  *ngFor="let aglomachine of $aglomachineData | async"
+  [aglomachine]="aglomachine"
+></app-aglomachine-card>
