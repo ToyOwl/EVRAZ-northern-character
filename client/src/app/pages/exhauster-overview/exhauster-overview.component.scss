@@ -1,3 +1,6 @@
 :host {
-  display: flex;
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+  grid-row-gap: 3em;
 }

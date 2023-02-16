@@ -1,3 +1,27 @@
-<li>
-  {{ exhauster.name }}
-</li>
+<p-card>
+  <ng-template pTemplate="header">
+    {{ exhauster.name }}
+    <button pButton pRipple type="button" icon="pi pi-chevron-right"></button>
+  </ng-template>
+  <section>
+    {{ exhauster.rotor }}
+    <span class="date-wrapper">{{
+      exhauster.rotorLastChanged | date : "dd.MM.yyyy"
+    }}</span>
+  </section>
+  <h5>Последняя замена ротора</h5>
+  <section>
+    <span>{{ exhauster.rotorLastChanged | daysSince }}</span>
+    <span>{{ exhauster.rotorChangeExpected | daysSince }}</span>
+  </section>
+  <section>
+    <p-accordion>
+        <p-accordionTab header="Предупреждение">
+           Content 1
+        </p-accordionTab>
+        <p-accordionTab header="Все сенсоры">
+            Content 2
+        </p-accordionTab>
+    </p-accordion>
+  </section>
+</p-card>
