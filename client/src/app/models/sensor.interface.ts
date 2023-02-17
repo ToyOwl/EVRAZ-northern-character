@@ -1,9 +1,11 @@
 export interface Sensor {
   name: string;
-  hasCritical: boolean;
-  params: {
+  hasAlarm: boolean;
+  hasWarning: boolean;
+  params: Array<{
     name: string;
     value: number;
-    isCritical: boolean;
-  }[];
+    isAlarm: boolean;
+    isWarning: boolean;
+  }>;
 }

@@ -9,3 +9,5 @@ import { Aglomachine } from 'src/app/models/aglomachine.interface';
 export class AglomachineCardComponent {
   @Input() aglomachine!: Aglomachine;
 }
+
+
