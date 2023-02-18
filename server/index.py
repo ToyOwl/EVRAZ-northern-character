@@ -1,12 +1,26 @@
 from fastapi import FastAPI
 from transformData import transformData
 from kafka import KafkaConsumer
+from fastapi.middleware.cors import CORSMiddleware
 
 import json
 from json import loads
 
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:4200",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 consumer = None
 
@@ -15,9 +29,10 @@ consumer = None
 async def startup_event():
     await initialize()
 
+
 def getRawData():
     if consumer is None:
-       return
+        return
     try:
         for message in consumer:
             print(message)
@@ -47,7 +62,7 @@ async def getAllExhausters():
 
     return response
 
-<<<<<<< HEAD
+
 @app.get('/api/get-all-exhausters-cache-test')
 async def getAllExhaustersCache():
     '''Get pre-loaded test data and transform it into array of exhausters'''
@@ -57,17 +72,16 @@ async def getAllExhaustersCache():
 
     return (response)
 
-=======
->>>>>>> 2ba3b26bf48a7e6f2e862bddc7cf125fed27c613
 
 @app.get('/api/get-exhauster/{id}')
 async def getExhausterById(id):
-    allExhausters = await getAllExhausters()
+    allExhausters = await getAllExhaustersCache()
     if int(id) > len(allExhausters):
         return {'error': 'Invalid id'}
     response = allExhausters[int(id)-1]
 
     return response
+
 
 async def initialize():
     consumer = KafkaConsumer(

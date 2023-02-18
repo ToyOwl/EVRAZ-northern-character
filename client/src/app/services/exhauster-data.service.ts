@@ -28,7 +28,12 @@ export class ExhausterDataService {
             hasAlarm: false,
             params: [
               { name: 'T, °C', value: 100, hasAlarm: false, hasWarning: false },
-              { name: 'В, мм/с', value: 50, hasAlarm: false, hasWarning: false },
+              {
+                name: 'В, мм/с',
+                value: 50,
+                hasAlarm: false,
+                hasWarning: false,
+              },
             ],
           });
         }
@@ -76,9 +81,16 @@ export class ExhausterDataService {
           name: 'Агломашина 3',
           exhausters: [exhausters[4], exhausters[5]],
         };
-        
+
         return of(agloMachines);
       }),
+      tap((res) => console.log(res))
+    );
+  }
+
+  public getExhausterById(id: string): Observable<Exhauster> {
+    return this.http.get(this.serverURL + 'get-exhauster/' + id).pipe(
+      map((res: unknown) => res as Exhauster),
       tap((res) => console.log(res))
     );
   }
