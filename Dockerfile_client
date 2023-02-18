@@ -1,0 +1,13 @@
+#stage 1
+FROM node:latest as node
+WORKDIR /client
+COPY client /client
+RUN npm install
+RUN npm run build --prod
+#stage 2
+FROM nginx:alpine
+COPY --from=node /client/dist/evraz-northern-character /usr/share/nginx/html
+
+# для командной строки
+# для сборки введите: docker build -t bharathirajatut/angular-app:latest .
+# потом это для запуска: docker run -d -p 8000:8000 bharathirajatut/angular-app:latest

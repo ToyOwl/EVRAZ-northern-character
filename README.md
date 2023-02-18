@@ -7,6 +7,8 @@
 `uvicorn index:app --reload`
 ## Client
 `cd client`
+`npm i`
+`ng serve`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
 

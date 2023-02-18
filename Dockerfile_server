@@ -1,0 +1,13 @@
+FROM python:3.9
+
+WORKDIR /server
+
+COPY server /server
+
+RUN pip install --no-cache-dir -r ./requirements.txt
+
+CMD ["uvicorn",  "index:app", "--reload"]
+
+# для командной строки
+# для сборки введите: docker build -t python-server-app .
+# потом это для запуска: docker run -d -p 4200:4200 python-server-app
