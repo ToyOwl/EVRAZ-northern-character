@@ -27,8 +27,8 @@ export class ExhausterDataService {
             hasWarning: false,
             hasAlarm: false,
             params: [
-              { name: 'T, °C', value: 100, isAlarm: false, isWarning: false },
-              { name: 'В, мм/с', value: 50, isAlarm: false, isWarning: false },
+              { name: 'T, °C', value: 100, hasAlarm: false, hasWarning: false },
+              { name: 'В, мм/с', value: 50, hasAlarm: false, hasWarning: false },
             ],
           });
         }
@@ -41,7 +41,7 @@ export class ExhausterDataService {
           // rotorLastChanged: Date.now() - 690061,
           // rotorChangeExpected: Date.now() - 990061,
           bearings: sensors,
-          aux_items: sensors,
+          aux_items: [],
         });
         counter++;
       }

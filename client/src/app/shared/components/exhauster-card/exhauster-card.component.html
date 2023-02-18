@@ -16,7 +16,7 @@
     ></button>
   </ng-template>
   <section>
-    <p-accordion [multiple]="true" headerStyleClass="alarm">
+    <p-accordion [multiple]="true">
       <p-accordionTab>
         <ng-template pTemplate="header">
           <h4>Подшипники</h4>
@@ -39,7 +39,14 @@
           </p-accordionTab>
         </p-accordion>
       </p-accordionTab>
-      <p-accordionTab header="Другие системы"> Coming soon </p-accordionTab>
+      <p-accordionTab>
+        <ng-template pTemplate="header">
+          <h4>Другие системы</h4>
+        </ng-template>
+        <p *ngFor="let sensor of exhauster.aux_items">
+          {{ sensor.name }}: <b>{{ sensor.value | number : "1.2-2" }}</b>
+        </p>
+      </p-accordionTab>
     </p-accordion>
   </section>
 </p-card>

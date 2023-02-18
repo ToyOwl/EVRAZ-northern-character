@@ -1,3 +1,4 @@
+import { SensorParam } from './sensor-param.interface';
 import { Sensor } from './sensor.interface';
 
 export interface Exhauster {
@@ -8,5 +9,5 @@ export interface Exhauster {
   hasAlarm: boolean;
   hasWarning: boolean;
   bearings: Sensor[];
-  aux_items: Sensor[];
+  aux_items: SensorParam[];
 }

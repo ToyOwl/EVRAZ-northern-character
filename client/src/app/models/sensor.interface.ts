@@ -1,11 +1,8 @@
+import { SensorParam } from "./sensor-param.interface";
+
 export interface Sensor {
   name: string;
   hasAlarm: boolean;
   hasWarning: boolean;
-  params: Array<{
-    name: string;
-    value: number;
-    isAlarm: boolean;
-    isWarning: boolean;
-  }>;
+  params: SensorParam[];
 }
