@@ -1,20 +1,8 @@
 from fastapi import FastAPI
+from transformData import transformData
+from getRawData import getRawData
 
 app = FastAPI()
-
-
-def getDataFromKafka():
-    result = {}  # json
-    # TODO
-    # establish connection to kafka and write data to result json
-    return result
-
-
-def transformData(data):
-    result = {}  # json
-    # TODO
-    # transform  raw data to business entities
-    return result
 
 
 def findExhausterById(exhausters, id):
@@ -28,10 +16,11 @@ def findExhausterById(exhausters, id):
 
 @app.get('/api/get-all-exhausters')
 async def getAllExhausters():
-    rawData = getDataFromKafka()
-    respose = transformData(rawData)
+    '''Get sensor data from Kafka and transform it into array of exhausters'''
+    rawData = getRawData()
+    response = transformData(rawData)
 
-    return respose
+    return response
 
 
 @app.get('/api/get-exhauster/{id}')
