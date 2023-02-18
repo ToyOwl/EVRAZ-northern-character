@@ -4,6 +4,7 @@ import { ExhausterOverviewComponent } from './exhauster-overview/exhauster-overv
 import { ExhausterDetailComponent } from './exhauster-detail/exhauster-detail.component';
 import { TrendsComponent } from './trends/trends.component';
 import { SharedModule } from '../shared/shared.module';
+import { PrimeModules } from '../prime-modules';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { SharedModule } from '../shared/shared.module';
     ExhausterDetailComponent,
     TrendsComponent,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, PrimeModules],
   exports: [
     ExhausterOverviewComponent,
     ExhausterDetailComponent,

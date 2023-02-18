@@ -1,14 +1,28 @@
-<main *ngIf="$exhauster | async as exhauster">
+<main *ngIf="$exhauster | async as exhauster" class="card">
   <h1>Эксгаустер №{{ exhauster.name }}</h1>
   <section *ngFor="let bearing of exhauster.bearings">
     <h2>Подшипник №{{ bearing.name }}</h2>
-    <ul>
-      <li *ngFor="let param of bearing.params">
-        {{ param.name }}: {{ param.value | number : "1.2-2" }}
-      </li>
-    </ul>
+    <p-table [value]="bearing.params" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.value | number : "1.2-2" }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </section>
-  <section *ngFor="let item of exhauster.aux_items">
-    <h2>{{ item.name }}: {{ item.value | number : "1.2-2" }}</h2>
+  <section>
+    <h2>Другие системы</h2>
+    <p-table
+      [value]="exhauster.aux_items"
+      [tableStyle]="{ 'min-width': '50rem' }"
+    >
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.value | number : "1.2-2" }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </section>
 </main>
