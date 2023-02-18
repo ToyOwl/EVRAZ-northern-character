@@ -1,5 +1,17 @@
+<main *ngIf="$exhauster === empty">
+  <p-progressBar mode="indeterminate"></p-progressBar>
+</main>
 <main *ngIf="$exhauster | async as exhauster" class="card">
-  <h1>Эксгаустер №{{ exhauster.name }}</h1>
+  <section class="header">
+    <h1>Эксгаустер №{{ exhauster.name }}</h1>
+    <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-chevron-left"
+    [routerLink]="['/exhausters/']"
+  ></button>
+  </section>
   <section *ngFor="let bearing of exhauster.bearings">
     <h2>Подшипник №{{ bearing.name }}</h2>
     <p-table [value]="bearing.params" [tableStyle]="{ 'min-width': '50rem' }">

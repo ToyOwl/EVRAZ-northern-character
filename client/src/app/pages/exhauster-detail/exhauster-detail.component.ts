@@ -7,14 +7,20 @@ import { ExhausterDataService } from 'src/app/services/exhauster-data.service';
 @Component({
   selector: 'app-exhauster-detail',
   templateUrl: './exhauster-detail.component.html',
-  styleUrls: ['./exhauster-detail.component.scss']
+  styleUrls: ['./exhauster-detail.component.scss'],
 })
 export class ExhausterDetailComponent {
+  empty = EMPTY;
   $exhauster: Observable<Exhauster> = EMPTY;
 
-  constructor(private exhausterDataService: ExhausterDataService, private route: ActivatedRoute,) {}
+  constructor(
+    private exhausterDataService: ExhausterDataService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.$exhauster = this.exhausterDataService.getExhausterById(this.route.snapshot.params['id']);
+    this.$exhauster = this.exhausterDataService.getExhausterById(
+      this.route.snapshot.params['id']
+    );
   }
 }

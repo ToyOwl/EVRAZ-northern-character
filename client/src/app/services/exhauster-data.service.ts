@@ -83,16 +83,14 @@ export class ExhausterDataService {
         };
 
         return of(agloMachines);
-      }),
-      tap((res) => console.log(res))
+      })
     );
   }
 
   public getExhausterById(id: string): Observable<Exhauster> {
-    return this.http.get(this.serverURL + 'get-exhauster/' + id).pipe(
-      map((res: unknown) => res as Exhauster),
-      tap((res) => console.log(res))
-    );
+    return this.http
+      .get(this.serverURL + 'get-exhauster/' + id)
+      .pipe(map((res: unknown) => res as Exhauster));
   }
 
   public testData() {

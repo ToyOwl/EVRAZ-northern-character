@@ -9,6 +9,7 @@ import { ExhausterDataService } from 'src/app/services/exhauster-data.service';
   styleUrls: ['./exhauster-overview.component.scss'],
 })
 export class ExhausterOverviewComponent implements OnInit {
+  empty = EMPTY;
   $aglomachineData: Observable<Aglomachine[]> = EMPTY;
 
   constructor(private exhausterDataService: ExhausterDataService) {}

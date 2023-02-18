@@ -5,6 +5,7 @@ import { ExhausterDetailComponent } from './exhauster-detail/exhauster-detail.co
 import { TrendsComponent } from './trends/trends.component';
 import { SharedModule } from '../shared/shared.module';
 import { PrimeModules } from '../prime-modules';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { PrimeModules } from '../prime-modules';
     ExhausterDetailComponent,
     TrendsComponent,
   ],
-  imports: [CommonModule, SharedModule, PrimeModules],
+  imports: [CommonModule, SharedModule, PrimeModules, AppRoutingModule],
   exports: [
     ExhausterOverviewComponent,
     ExhausterDetailComponent,
