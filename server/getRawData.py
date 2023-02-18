@@ -20,10 +20,7 @@ def getRawData():
     try:
         for message in consumer:
             print(message)
-            # message = message.value
-            # print(message)
             payload = message.value.decode("utf-8")
-            # переводит данные в формат json, никуда не сохраняет
             data = json.loads(payload)
 
             return data
