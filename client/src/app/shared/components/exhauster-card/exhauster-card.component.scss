@@ -16,3 +16,8 @@
 h4{
   margin: 0;
 }
+
+
+:host ::ng-deep .p-accordion-content{
+  padding: 0.5em;
+}
