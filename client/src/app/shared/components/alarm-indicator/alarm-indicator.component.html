@@ -1,0 +1,9 @@
+<span
+  class="indicator --alarm"
+  [ngClass]="{
+    indicator: true,
+    '--alarm': hasAlarm,
+    '--warning': hasWarning && !hasAlarm,
+    '--hidden': !hasAlarm && !hasWarning
+  }"
+></span>

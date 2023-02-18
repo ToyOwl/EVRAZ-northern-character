@@ -4,10 +4,12 @@ import { ExhausterCardComponent } from './components/exhauster-card/exhauster-ca
 import { PrimeModules } from '../prime-modules';
 import { AglomachineCardComponent } from './components/aglomachine-card/aglomachine-card.component';
 import { DaysSincePipe } from './pipes/days-since.pipe';
+import { AppRoutingModule } from '../app-routing.module';
+import { AlarmIndicatorComponent } from './components/alarm-indicator/alarm-indicator.component';
 
 @NgModule({
-  declarations: [ExhausterCardComponent, AglomachineCardComponent, DaysSincePipe],
-  imports: [CommonModule, ...PrimeModules],
+  declarations: [ExhausterCardComponent, AglomachineCardComponent, DaysSincePipe, AlarmIndicatorComponent],
+  imports: [CommonModule, AppRoutingModule, ...PrimeModules],
   exports: [ExhausterCardComponent, AglomachineCardComponent],
 })
 export class SharedModule {}

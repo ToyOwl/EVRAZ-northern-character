@@ -1,27 +1,45 @@
 <p-card>
   <ng-template pTemplate="header">
-    {{ exhauster.name }}
-    <button pButton pRipple type="button" icon="pi pi-chevron-right"></button>
+    <h4>
+      <app-alarm-indicator
+        [hasAlarm]="exhauster.hasAlarm"
+        [hasWarning]="exhauster.hasWarning"
+      ></app-alarm-indicator>
+      {{ "Эксгаустер №" + exhauster.name }}
+    </h4>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-chevron-right"
+      [routerLink]="['/exhausters/' + exhauster.name]"
+    ></button>
   </ng-template>
-  <!-- <section>
-    {{ exhauster.rotor }}
-    <span class="date-wrapper">{{
-      exhauster.rotorLastChanged | date : "dd.MM.yyyy"
-    }}</span>
-  </section>
-  <h5>Последняя замена ротора</h5>
   <section>
-    <span>{{ exhauster.rotorLastChanged | daysSince }}</span>
-    <span>{{ exhauster.rotorChangeExpected | daysSince }}</span>
-  </section> -->
-  <section>
-    <p-accordion>
-        <p-accordionTab header="Предупреждение">
-           Content 1
-        </p-accordionTab>
-        <p-accordionTab header="Все сенсоры">
-            Content 2
-        </p-accordionTab>
+    <p-accordion [multiple]="true" headerStyleClass="alarm">
+      <p-accordionTab>
+        <ng-template pTemplate="header">
+          <h4>Подшипники</h4>
+        </ng-template>
+        <p-accordion [multiple]="true">
+          <p-accordionTab *ngFor="let bearing of exhauster.bearings">
+            <ng-template pTemplate="header">
+              <h4>
+                <app-alarm-indicator
+                  [hasAlarm]="bearing.hasAlarm"
+                  [hasWarning]="bearing.hasWarning"
+                ></app-alarm-indicator>
+                Подшипник №
+                {{ bearing.name }}
+              </h4>
+            </ng-template>
+            <p *ngFor="let sensor of bearing.params">
+              {{ sensor.name }}: <b>{{ sensor.value | number : "1.2-2" }}</b>
+            </p>
+          </p-accordionTab>
+        </p-accordion>
+      </p-accordionTab>
+      <p-accordionTab header="Другие системы"> Coming soon </p-accordionTab>
     </p-accordion>
   </section>
 </p-card>
