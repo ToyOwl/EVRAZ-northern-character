@@ -83,7 +83,135 @@ def form_sensor(data, mapping, name): ##<-- bearing!!
     return sens
 
 def form_aux_items(data, mapping):
+
+    print(mapping)
+
     aux_items = []
+
+    cool_syst_oil_ta = {}
+    cool_syst_oil_ta['name'] = mapping['cooler_system']['oil']['temperature_after_c']
+    cool_syst_oil_ta['value'] = data[mapping['cooler_system']['oil']['temperature_after']] ## sig from Kafka data
+    cool_syst_oil_ta['hasAlarm'] = False
+    cool_syst_oil_ta['hasWarning'] = False
+    aux_items.append(cool_syst_oil_ta)
+
+    cool_syst_oil_tb = {}
+    cool_syst_oil_tb['name'] = mapping['cooler_system']['oil']['temperature_before_c']
+    cool_syst_oil_tb['value'] = data[mapping['cooler_system']['oil']['temperature_before']] ## sig from Kafka data
+    cool_syst_oil_tb['hasAlarm'] = False
+    cool_syst_oil_tb['hasWarning'] = False
+    aux_items.append(cool_syst_oil_tb)
+
+    cool_syst_water_ta = {}
+    cool_syst_water_ta['name'] = mapping['cooler_system']['water']['temperature_after_c']
+    cool_syst_water_ta['value'] = data[mapping['cooler_system']['water']['temperature_after']] ## sig from Kafka data
+    cool_syst_water_ta['hasAlarm'] = False
+    cool_syst_water_ta['hasWarning'] = False
+    aux_items.append(cool_syst_water_ta)
+
+    cool_syst_water_tb = {}
+    cool_syst_water_tb['name'] = mapping['cooler_system']['water']['temperature_before_c']
+    cool_syst_water_tb['value'] = data[mapping['cooler_system']['water']['temperature_before']] ## sig from Kafka data
+    cool_syst_water_tb['hasAlarm'] = False
+    cool_syst_water_tb['hasWarning'] = False
+    aux_items.append(cool_syst_water_tb)
+
+    gas_collector_ta = {}
+    gas_collector_ta['name'] = mapping['gas_collector']['temperature_after_c']
+    gas_collector_ta['value'] = data[mapping['gas_collector']['temperature_after']] ## sig from Kafka data
+    gas_collector_ta['hasAlarm'] = False
+    gas_collector_ta['hasWarning'] = False
+    aux_items.append(gas_collector_ta)
+
+    gas_collector_tb = {}
+    gas_collector_tb['name'] = mapping['gas_collector']['temperature_before_c']
+    gas_collector_tb['value'] = data[mapping['gas_collector']['temperature_before']] ## sig from Kafka data
+    gas_collector_tb['hasAlarm'] = False
+    gas_collector_tb['hasWarning'] = False
+    aux_items.append(gas_collector_tb)
+
+    gvs_1 = {}
+    gvs_1['name'] = mapping['gate_valve_signal']['gas_valve_open_c']
+    gvs_1['value'] = data[mapping['gate_valve_signal']['gas_valve_open']] ## sig from Kafka data
+    gvs_1['hasAlarm'] = False
+    gvs_1['hasWarning'] = False
+    aux_items.append(gvs_1)
+
+    gvs_2 = {}
+    gvs_2['name'] = mapping['gate_valve_signal']['gas_valve_closed_c']
+    gvs_2['value'] = data[mapping['gate_valve_signal']['gas_valve_closed']] ## sig from Kafka data
+    gvs_2['hasAlarm'] = False
+    gvs_2['hasWarning'] = False
+    aux_items.append(gvs_2)
+
+    gvs_3 = {}
+    gvs_3['name'] = mapping['gate_valve_signal']['gas_valve_position_c']
+    if mapping['gate_valve_signal']['gas_valve_position']:
+        gvs_3['value'] = data[mapping['gate_valve_signal']['gas_valve_position']] ## sig from Kafka data
+    else: 
+        gvs_3['value'] = 0.0
+    gvs_3['hasAlarm'] = False
+    gvs_3['hasWarning'] = False
+    aux_items.append(gvs_3)
+
+    md_1 = {}
+    md_1['name'] = mapping['main_drive']['rotor_current_c']
+    if mapping['main_drive']['rotor_current']:
+        md_1['value'] = data[mapping['main_drive']['rotor_current']] ## sig from Kafka data
+    else:
+         md_1['value'] = 0.0
+    md_1['hasAlarm'] = False
+    md_1['hasWarning'] = False
+    aux_items.append(md_1)
+
+    md_2 = {}
+    md_2['name'] = mapping['main_drive']['rotor_voltage_c']
+    if mapping['main_drive']['rotor_voltage']:
+        md_2['value'] = data[mapping['main_drive']['rotor_voltage']] ## sig from Kafka data
+    else:
+        md_2['value'] = 0.0
+    md_2['hasAlarm'] = False
+    md_2['hasWarning'] = False
+    aux_items.append(md_2)
+
+    md_3 = {}
+    md_3['name'] = mapping['main_drive']['stator_current_c']
+    md_3['value'] = data[mapping['main_drive']['stator_current']] ## sig from Kafka data
+    md_3['hasAlarm'] = False
+    md_3['hasWarning'] = False
+    aux_items.append(md_3)
+
+    md_4 = {}
+    md_4['name'] = mapping['main_drive']['stator_voltage_c']
+    if mapping['main_drive']['stator_voltage']:
+        md_4['value'] = data[mapping['main_drive']['stator_voltage']] ## sig from Kafka data
+    else:
+        md_4['value'] = 0.0
+    md_4['hasAlarm'] = False
+    md_4['hasWarning'] = False
+    aux_items.append(md_4)
+
+    oil_syst_l = {}
+    oil_syst_l['name'] = mapping['oil_system']['oil_level_c']
+    oil_syst_l['value'] = data[mapping['oil_system']['oil_level']] ## sig from Kafka data
+    oil_syst_l['hasAlarm'] = False
+    oil_syst_l['hasWarning'] = False
+    aux_items.append(oil_syst_l)
+
+    oil_syst_p = {}
+    oil_syst_p['name'] = mapping['oil_system']['oil_pressure_c']
+    oil_syst_p['value'] = data[mapping['oil_system']['oil_pressure']] ## sig from Kafka data
+    oil_syst_p['hasAlarm'] = False
+    oil_syst_p['hasWarning'] = False
+    aux_items.append(oil_syst_p)
+
+    main_st = {}
+    main_st['name'] = mapping['main_state']['work_c']
+    main_st['value'] = data[mapping['main_state']['work']] ## sig from Kafka data
+    main_st['hasAlarm'] = False
+    main_st['hasWarning'] = False
+    aux_items.append(main_st)
+
 
     return aux_items
 
