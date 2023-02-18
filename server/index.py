@@ -37,7 +37,7 @@ async def getAllExhausters():
     return response
 
 @app.get('/api/get-all-exhausters-cache-test')
-async def getAllExhausters():
+async def getAllExhaustersCache():
     '''Get pre-loaded test data and transform it into array of exhausters'''
     with open('message-cache.json', encoding='utf-8') as f:
         rawData = json.load(f)
@@ -47,10 +47,10 @@ async def getAllExhausters():
 
 
 @app.get('/api/get-exhauster/{id}')
-async def getAllExhausters(id):
-    rawData = getDataFromKafka()
-    allExhausters = transformData(rawData)
-    # find exhauster with the given id
-    response = findExhausterById(allExhausters, id)
+async def getExhausterById(id):
+    allExhausters = await getAllExhausters()
+    if int(id) > len(allExhausters):
+        return {'error': 'Invalid id'}
+    response = allExhausters[int(id)-1]
 
     return response
