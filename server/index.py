@@ -30,7 +30,7 @@ async def getAllExhausters():
 
 
 @app.get('/api/get-all-exhausters-cache-test')
-async def getAllExhausters():
+async def getAllExhaustersCache():
     '''Get pre-loaded test data and transform it into array of exhausters'''
     with open('message-cache.json', encoding='utf-8') as f:
         rawData = json.load(f)

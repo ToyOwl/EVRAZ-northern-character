@@ -1,6 +1,3 @@
-<main *ngIf="$aglomachineData === empty" >
-  <p-progressBar mode="indeterminate"></p-progressBar>
-</main>
 <app-aglomachine-card
   *ngFor="let aglomachine of $aglomachineData | async"
   [aglomachine]="aglomachine"

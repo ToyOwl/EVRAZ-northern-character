@@ -64,7 +64,7 @@ export class ExhausterDataService {
   }
 
   public getAllAglomchines(): Observable<Aglomachine[]> {
-    return this.http.get(this.serverURL + 'get-all-exhausters-cache-test').pipe(
+    return this.http.get(this.serverURL + 'get-all-exhausters').pipe(
       map((res: unknown) => res as Exhauster[]),
       switchMap((exhausters: Exhauster[]) => {
         const agloMachines: Aglomachine[] = [];
